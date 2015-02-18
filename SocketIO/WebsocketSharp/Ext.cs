@@ -41,7 +41,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.IO.Compression;
-using System.Net.Sockets;
+using LostPolygon.System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using WebSocketSharp.Net;
@@ -746,10 +746,10 @@ namespace WebSocketSharp
              : String.Empty;
     }
 
-    internal static System.Net.IPAddress ToIPAddress (this string hostNameOrAddress)
+		internal static LostPolygon.System.Net.IPAddress ToIPAddress (this string hostNameOrAddress)
     {
       try {
-        var addrs = System.Net.Dns.GetHostAddresses (hostNameOrAddress);
+				var addrs = LostPolygon.System.Net.Dns.GetHostAddresses (hostNameOrAddress);
         return addrs [0];
       }
       catch {
@@ -1243,16 +1243,16 @@ namespace WebSocketSharp
     /// <exception cref="ArgumentNullException">
     /// <paramref name="address"/> is <see langword="null"/>.
     /// </exception>
-    public static bool IsLocal (this System.Net.IPAddress address)
+		public static bool IsLocal (this LostPolygon.System.Net.IPAddress address)
     {
       if (address == null)
         throw new ArgumentNullException ("address");
 
-      if (address.Equals (System.Net.IPAddress.Any) || System.Net.IPAddress.IsLoopback (address))
+			if (address.Equals (LostPolygon.System.Net.IPAddress.Any) || LostPolygon.System.Net.IPAddress.IsLoopback (address))
         return true;
 
-      var host = System.Net.Dns.GetHostName ();
-      var addrs = System.Net.Dns.GetHostAddresses (host);
+			var host = LostPolygon.System.Net.Dns.GetHostName ();
+			var addrs = LostPolygon.System.Net.Dns.GetHostAddresses (host);
       foreach (var addr in addrs)
         if (address.Equals (addr))
           return true;

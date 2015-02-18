@@ -29,7 +29,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Net.Sockets;
+using LostPolygon.System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.Text;
@@ -266,9 +266,9 @@ namespace WebSocketSharp.Net.WebSockets
     /// <value>
     /// A <see cref="System.Net.IPEndPoint"/> that represents the server endpoint.
     /// </value>
-    public override System.Net.IPEndPoint ServerEndPoint {
+		public override LostPolygon.System.Net.IPEndPoint ServerEndPoint {
       get {
-        return (System.Net.IPEndPoint) _client.Client.LocalEndPoint;
+				return (LostPolygon.System.Net.IPEndPoint) _client.Client.LocalEndPoint;
       }
     }
 
@@ -290,9 +290,9 @@ namespace WebSocketSharp.Net.WebSockets
     /// <value>
     /// A <see cref="System.Net.IPEndPoint"/> that represents the client endpoint.
     /// </value>
-    public override System.Net.IPEndPoint UserEndPoint {
+		public override LostPolygon.System.Net.IPEndPoint UserEndPoint {
       get {
-        return (System.Net.IPEndPoint) _client.Client.RemoteEndPoint;
+				return (LostPolygon.System.Net.IPEndPoint) _client.Client.RemoteEndPoint;
       }
     }
 

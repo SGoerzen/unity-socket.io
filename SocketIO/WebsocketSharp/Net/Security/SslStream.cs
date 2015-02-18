@@ -28,7 +28,7 @@
 
 using System;
 using System.Net.Security;
-using System.Net.Sockets;
+using LostPolygon.System.Net.Sockets;
 
 namespace WebSocketSharp.Net.Security
 {

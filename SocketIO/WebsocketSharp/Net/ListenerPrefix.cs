@@ -39,7 +39,7 @@
 #endregion
 
 using System;
-using System.Net;
+using LostPolygon.System.Net;
 
 namespace WebSocketSharp.Net
 {

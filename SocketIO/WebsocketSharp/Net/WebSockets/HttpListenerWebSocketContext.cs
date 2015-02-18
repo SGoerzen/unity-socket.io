@@ -248,7 +248,7 @@ namespace WebSocketSharp.Net.WebSockets
     /// <value>
     /// A <see cref="System.Net.IPEndPoint"/> that represents the server endpoint.
     /// </value>
-    public override System.Net.IPEndPoint ServerEndPoint {
+		public override LostPolygon.System.Net.IPEndPoint ServerEndPoint {
       get {
         return _context.Connection.LocalEndPoint;
       }
@@ -272,7 +272,7 @@ namespace WebSocketSharp.Net.WebSockets
     /// <value>
     /// A <see cref="System.Net.IPEndPoint"/> that represents the client endpoint.
     /// </value>
-    public override System.Net.IPEndPoint UserEndPoint {
+		public override LostPolygon.System.Net.IPEndPoint UserEndPoint {
       get {
         return _context.Connection.RemoteEndPoint;
       }

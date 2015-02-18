@@ -176,7 +176,7 @@ namespace WebSocketSharp.Net.WebSockets
     /// <value>
     /// A <see cref="System.Net.IPEndPoint"/> that represents the server endpoint.
     /// </value>
-    public abstract System.Net.IPEndPoint ServerEndPoint { get; }
+		public abstract LostPolygon.System.Net.IPEndPoint ServerEndPoint { get; }
 
     /// <summary>
     /// Gets the client information (identity, authentication, and security roles).
@@ -192,7 +192,7 @@ namespace WebSocketSharp.Net.WebSockets
     /// <value>
     /// A <see cref="System.Net.IPEndPoint"/> that represents the client endpoint.
     /// </value>
-    public abstract System.Net.IPEndPoint UserEndPoint { get; }
+		public abstract LostPolygon.System.Net.IPEndPoint UserEndPoint { get; }
 
     /// <summary>
     /// Gets the <see cref="WebSocketSharp.WebSocket"/> instance used for two-way communication

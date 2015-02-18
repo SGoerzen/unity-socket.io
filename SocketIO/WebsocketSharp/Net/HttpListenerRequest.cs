@@ -315,7 +315,7 @@ namespace WebSocketSharp.Net
     /// <value>
     /// A <see cref="System.Net.IPEndPoint"/> that represents the server endpoint.
     /// </value>
-    public System.Net.IPEndPoint LocalEndPoint {
+		public LostPolygon.System.Net.IPEndPoint LocalEndPoint {
       get {
         return _context.Connection.LocalEndPoint;
       }
@@ -365,7 +365,7 @@ namespace WebSocketSharp.Net
     /// <value>
     /// A <see cref="System.Net.IPEndPoint"/> that represents the client endpoint.
     /// </value>
-    public System.Net.IPEndPoint RemoteEndPoint {
+	public LostPolygon.System.Net.IPEndPoint RemoteEndPoint {
       get {
         return _context.Connection.RemoteEndPoint;
       }

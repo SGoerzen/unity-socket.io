@@ -38,7 +38,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
-using System.Net.Sockets;
+using LostPolygon.System.Net.Sockets;
 using System.Net.Security;
 using System.Security.Cryptography;
 using System.Text;

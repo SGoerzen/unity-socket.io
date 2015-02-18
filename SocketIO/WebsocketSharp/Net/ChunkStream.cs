@@ -41,7 +41,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Net;
+using LostPolygon.System.Net;
 using System.Text;
 
 namespace WebSocketSharp.Net

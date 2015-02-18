@@ -40,7 +40,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
+using LostPolygon.System.Net;
 
 namespace WebSocketSharp.Net
 {
