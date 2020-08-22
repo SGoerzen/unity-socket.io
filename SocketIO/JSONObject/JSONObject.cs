@@ -233,6 +233,12 @@ public class JSONObject
         jsonObject.AddArray(array);
         return jsonObject;
     }
+    public static JSONObject FromArray(float[] array)
+    {
+        var jsonObject = new JSONObject(Type.ARRAY);
+        jsonObject.AddArray(array);
+        return jsonObject;
+    }
     public static JSONObject FromArray(bool[] array)
     {
         var jsonObject = new JSONObject(Type.ARRAY);
@@ -545,6 +551,30 @@ public class JSONObject
     {
         foreach (var a in array)
             Add(a);
+    }
+    public void AddField(string name, bool[] array)
+    {
+        AddField(name, JSONObject.FromArray(array));
+    }
+    public void AddField(string name, float[] array)
+    {
+        AddField(name, JSONObject.FromArray(array));
+    }
+    public void AddField(string name, int[] array)
+    {
+        AddField(name, JSONObject.FromArray(array));
+    }
+    public void AddField(string name, string[] array)
+    {
+        AddField(name, JSONObject.FromArray(array));
+    }
+    public void AddField(string name, JSONObject[] array)
+    {
+        AddField(name, JSONObject.FromArray(array));
+    }
+    public void AddField(string name, AddJSONContents[] array)
+    {
+        AddField(name, JSONObject.FromArray(array));
     }
     public void AddField(string name, bool val)
     {
