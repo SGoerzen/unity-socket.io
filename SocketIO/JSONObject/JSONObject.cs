@@ -215,37 +215,37 @@ public class JSONObject
         return bakedObject;
     }
 
-    public static JSONObject FromArray(AddJSONContents[] array)
+    public static JSONObject Create(AddJSONContents[] array)
     {
         var jsonObject = new JSONObject(Type.ARRAY);
         jsonObject.AddArray(array);
         return jsonObject;
     }
-    public static JSONObject FromArray(string[] array)
+    public static JSONObject Create(string[] array)
     {
         var jsonObject = new JSONObject(Type.ARRAY);
         jsonObject.AddArray(array);
         return jsonObject;
     }
-    public static JSONObject FromArray(int[] array)
+    public static JSONObject Create(int[] array)
     {
         var jsonObject = new JSONObject(Type.ARRAY);
         jsonObject.AddArray(array);
         return jsonObject;
     }
-    public static JSONObject FromArray(float[] array)
+    public static JSONObject Create(float[] array)
     {
         var jsonObject = new JSONObject(Type.ARRAY);
         jsonObject.AddArray(array);
         return jsonObject;
     }
-    public static JSONObject FromArray(bool[] array)
+    public static JSONObject Create(bool[] array)
     {
         var jsonObject = new JSONObject(Type.ARRAY);
         jsonObject.AddArray(array);
         return jsonObject;
     }
-    public static JSONObject FromArray(JSONObject[] array)
+    public static JSONObject Create(JSONObject[] array)
     {
         var jsonObject = new JSONObject(Type.ARRAY);
         jsonObject.AddArray(array);
@@ -554,27 +554,27 @@ public class JSONObject
     }
     public void AddField(string name, bool[] array)
     {
-        AddField(name, JSONObject.FromArray(array));
+        AddField(name, Create(array));
     }
     public void AddField(string name, float[] array)
     {
-        AddField(name, JSONObject.FromArray(array));
+        AddField(name, Create(array));
     }
     public void AddField(string name, int[] array)
     {
-        AddField(name, JSONObject.FromArray(array));
+        AddField(name, Create(array));
     }
     public void AddField(string name, string[] array)
     {
-        AddField(name, JSONObject.FromArray(array));
+        AddField(name, Create(array));
     }
     public void AddField(string name, JSONObject[] array)
     {
-        AddField(name, JSONObject.FromArray(array));
+        AddField(name, Create(array));
     }
     public void AddField(string name, AddJSONContents[] array)
     {
-        AddField(name, JSONObject.FromArray(array));
+        AddField(name, Create(array));
     }
     public void AddField(string name, bool val)
     {
@@ -618,6 +618,13 @@ public class JSONObject
             list.Add(obj);
         }
     }
+
+    public void SetField(string name, bool[] array) { SetField(name, Create(array)); }
+    public void SetField(string name, float[] array) { SetField(name, Create(array)); }
+    public void SetField(string name, int[] array) { SetField(name, Create(array)); }
+    public void SetField(string name, string[] array) { SetField(name, Create(array)); }
+    public void SetField(string name, JSONObject[] array) { SetField(name, Create(array)); }
+
     public void SetField(string name, bool val) { SetField(name, Create(val)); }
     public void SetField(string name, float val) { SetField(name, Create(val)); }
     public void SetField(string name, int val) { SetField(name, Create(val)); }
