@@ -25,16 +25,15 @@ A Unity Asset Store release is also possible. The current official version is he
 
 
 # How to use
- 
-  1. Obtaining the Socket.IO component reference
-    `GameObject go = GameObject.Find("SocketIO");
-    SocketIOComponent socket = go.GetComponent<SocketIOComponent>();`
-	Bear in mind that using GameObject.Find might be pretty expensive, you 
-	might want to store that reference in a variable for later use.
-	
-	
-  2. Receiving events
+
+## Obtaining the Socket.IO component reference    
+    GameObject go = GameObject.Find("SocketIO");
     
+    SocketIOComponent socket = go.GetComponent<SocketIOComponent>();
+
+Bear in mind that using GameObject.Find might be pretty expensive, you might want to store that reference in a variable for later use.
+	
+## Receiving events    
     Using the socket reference you can receive custom events
     
     public void Start(){
