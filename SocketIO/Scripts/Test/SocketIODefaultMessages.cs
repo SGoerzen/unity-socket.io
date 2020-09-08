@@ -26,16 +26,16 @@ public class SocketIODefaultMessages : MonoBehaviour
 
     void OnOpen(SocketIOEvent e)
     {
-        Debug.Log("[SocketIO] Open received: " + e.name + " " + e.data);
+        Debug.Log("[SocketIO] Connection opened.");
     }
 
     void OnClose(SocketIOEvent e)
     {
-        Debug.Log("[SocketIO] Close received: " + e.name + " " + e.data);
+        Debug.Log("[SocketIO] Connection closed.");
     }
 
     void OnError(SocketIOEvent e)
     {
-        Debug.LogError("[SocketIO] Error received: " + e.name + " " + e.data);
+        Debug.LogError("[SocketIO] Error received: " + e);
     }
 }

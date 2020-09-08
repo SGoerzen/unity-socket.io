@@ -28,15 +28,11 @@
 
 #endregion
 
-//#define SOCKET_IO_DEBUG			// Uncomment this for debug
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
 using WebSocketSharp;
-using WebSocketSharp.Net;
 
 namespace SocketIO
 {
@@ -81,6 +77,8 @@ namespace SocketIO
         private object ackQueueLock;
         private Queue<Packet> ackQueue;
 
+        private bool isOpen = false;
+
         #endregion
 
         #region Unity interface
@@ -93,10 +91,10 @@ namespace SocketIO
             packetId = 0;
 
             ws = new WebSocket(url);
-            ws.OnOpen += OnOpen;
+            ws.OnOpen += (s, e) => OnOpen();
             ws.OnMessage += OnMessage;
             ws.OnError += OnError;
-            ws.OnClose += OnClose;
+            ws.OnClose += (s, e) => OnClose();
             wsConnected = false;
 
             eventQueueLock = new object();
@@ -160,19 +158,13 @@ namespace SocketIO
             pingThread?.Abort();
         }
 
-        public void OnApplicationQuit()
-        {
-            Close();
-        }
+        public void OnApplicationQuit() => Close();
 
         #endregion
 
         #region Public Interface
 
-        public void SetHeader(string header, string value)
-        {
-            ws.SetHeader(header, value);
-        }
+        public void SetHeader(string header, string value) => ws.SetHeader(header, value);
 
         public void Connect()
         {
@@ -189,6 +181,14 @@ namespace SocketIO
         {
             EmitClose();
             connected = false;
+
+            socketThread?.Abort();
+            pingThread?.Abort();
+
+            socketThread = null;
+            pingThread = null;
+
+            ws?.Close();
         }
 
         public void On(string ev, Action<SocketIOEvent> callback)
@@ -326,11 +326,6 @@ namespace SocketIO
             }
         }
 
-        private void OnOpen(object sender, EventArgs e)
-        {
-            EmitEvent("open");
-        }
-
         private void OnMessage(object sender, MessageEventArgs e)
         {
             var packet = Decoder.Decode(e);
@@ -358,7 +353,23 @@ namespace SocketIO
         private void HandleOpen(Packet packet)
         {
             sid = packet.json["sid"].str;
+            OnOpen();
+        }
+
+        private void OnOpen()
+        {
+            if (isOpen)
+                return;
             EmitEvent("open");
+            isOpen = true;
+        }
+
+        private void OnClose()
+        {
+            if (!isOpen)
+                return;
+            EmitEvent("close");
+            isOpen = false;
         }
 
         private void HandlePing()
@@ -408,7 +419,6 @@ namespace SocketIO
         }
 
         private void OnError(object sender, ErrorEventArgs e) => EmitEvent("error");
-        private void OnClose(object sender, CloseEventArgs e) => EmitEvent("close");
         private void EmitEvent(string type) => EmitEvent(new SocketIOEvent(type));
 
         private void EmitEvent(SocketIOEvent ev)
