@@ -1,4 +1,5 @@
 #region License
+
 /*
  * EnginePacketType.cs
  *
@@ -24,23 +25,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 #endregion
+
 using System;
 
-/**
- * Message types
- */ 
 namespace SocketIO
 {
-	public enum EnginePacketType
-	{
-		UNKNOWN	 = -1,
-		OPEN 	 =  0,
-		CLOSE 	 =  1,
-		PING 	 =  2,
-		PONG	 =  3,
-		MESSAGE	 =  4,
-		UPGRADE  =  5,
-		NOOP   	 =  6
-	}
+    public enum EnginePacketType
+    {
+        Unknown = -1,
+        Open = 0,
+        Close = 1,
+        Ping = 2,
+        Pong = 3,
+        Message = 4,
+        Upgrade = 5,
+        Noop = 6
+    }
 }

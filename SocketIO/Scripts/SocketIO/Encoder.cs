@@ -26,36 +26,29 @@
  */
 #endregion
 
-//#define SOCKET_IO_DEBUG			// Uncomment this for debug
 using System;
-using System.Collections;
 using System.Text;
-using UnityEngine;
 
 namespace SocketIO
 {
 	public class Encoder
 	{
-		public string Encode(Packet packet)
+		public static string Encode(Packet packet)
 		{
 			try
 			{
-				#if SOCKET_IO_DEBUG
-				Debug.Log("[SocketIO] Encoding: " + packet.json);
-				#endif
-
-				StringBuilder builder = new StringBuilder();
+				var builder = new StringBuilder();
 
 				// first is type
 				builder.Append((int)packet.enginePacketType);
-				if(!packet.enginePacketType.Equals(EnginePacketType.MESSAGE)){
+				if(!packet.enginePacketType.Equals(EnginePacketType.Message)){
 					return builder.ToString();
 				}
 
 				builder.Append((int)packet.socketPacketType);
 
 				// attachments if we have them
-				if (packet.socketPacketType == SocketPacketType.BINARY_EVENT || packet.socketPacketType == SocketPacketType.BINARY_ACK) {
+				if (packet.socketPacketType == SocketPacketType.BinaryEvent || packet.socketPacketType == SocketPacketType.BinaryAck) {
 					builder.Append(packet.attachments);
 					builder.Append('-');
 				}
@@ -76,14 +69,10 @@ namespace SocketIO
 					builder.Append(packet.json.ToString());
 				}
 
-				#if SOCKET_IO_DEBUG
-				Debug.Log("[SocketIO] Encoded: " + builder);
-				#endif
-
 				return builder.ToString();
 			
 			} catch(Exception ex) {
-				throw new SocketIOException("Packet encoding failed: " + packet ,ex);
+				throw new SocketIOException("Packet encoding failed: " + packet, ex);
 			}
 		}
 	}

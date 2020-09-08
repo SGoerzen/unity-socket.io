@@ -37,11 +37,14 @@ namespace SocketIO
 		public string nsp;
 		public int id;
 		public JSONObject json;
-
-		public Packet() : this(EnginePacketType.UNKNOWN, SocketPacketType.UNKNOWN, -1, "/", -1, null) { }
-		public Packet(EnginePacketType enginePacketType) : this(enginePacketType, SocketPacketType.UNKNOWN, -1, "/", -1, null) { }
-
-		public Packet(EnginePacketType enginePacketType, SocketPacketType socketPacketType, int attachments, string nsp, int id, JSONObject json)
+		
+		public Packet(
+			EnginePacketType enginePacketType = EnginePacketType.Unknown, 
+			SocketPacketType socketPacketType = SocketPacketType.Unknown, 
+			int attachments = -1, 
+			string nsp = "/", 
+			int id = -1, 
+			JSONObject json = null)
 		{
 			this.enginePacketType = enginePacketType;
 			this.socketPacketType = socketPacketType;
@@ -53,7 +56,7 @@ namespace SocketIO
 
 		public override string ToString()
 		{
-			return string.Format("[Packet: enginePacketType={0}, socketPacketType={1}, attachments={2}, nsp={3}, id={4}, json={5}]", enginePacketType, socketPacketType, attachments, nsp, id, json);
+			return $"[Packet: enginePacketType={enginePacketType}, socketPacketType={socketPacketType}, attachments={attachments}, nsp={nsp}, id={id}, json={json}]";
 		}
 	}
 }

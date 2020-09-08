@@ -30,13 +30,11 @@ namespace SocketIO
 {
 	public class SocketIOEvent
 	{
-		public string name { get; set; }
+		public string name { get; private set; }
 
-		public JSONObject data { get; set; }
-
-		public SocketIOEvent(string name) : this(name, null) { }
+		public JSONObject data { get; private set; }
 		
-		public SocketIOEvent(string name, JSONObject data)
+		public SocketIOEvent(string name, JSONObject data = null)
 		{
 			this.name = name;
 			this.data = data;
@@ -44,7 +42,7 @@ namespace SocketIO
 		
 		public override string ToString()
 		{
-			return string.Format("[SocketIOEvent: name={0}, data={1}]", name, data);
+			return $"[SocketIOEvent: name={name}, data={data}]";
 		}
 	}
 }

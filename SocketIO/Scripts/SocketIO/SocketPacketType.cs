@@ -1,4 +1,5 @@
 #region License
+
 /*
  * SocketPacketType.cs
  *
@@ -24,20 +25,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 #endregion
 
 namespace SocketIO
 {
-	public enum SocketPacketType
-	{
-		UNKNOWN         = -1,
-		CONNECT      	=  0,
-		DISCONNECT      =  1,
-		EVENT          	=  2,
-		ACK             =  3,
-		ERROR         	=  4,
-		BINARY_EVENT 	=  5,
-		BINARY_ACK   	=  6,
-		CONTROL         =  7
-	}
+    public enum SocketPacketType
+    {
+        Unknown = -1,
+        Connect = 0,
+        Disconnect = 1,
+        Event = 2,
+        Ack = 3,
+        Error = 4,
+        BinaryEvent = 5,
+        BinaryAck = 6,
+        Control = 7
+    }
 }
