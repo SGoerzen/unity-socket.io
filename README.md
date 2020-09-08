@@ -28,13 +28,12 @@ A Unity Asset Store release is also possible. The current official version is he
 
 ## Obtaining the Socket.IO component reference    
     GameObject go = GameObject.Find("SocketIO");
-    
     SocketIOComponent socket = go.GetComponent<SocketIOComponent>();
 
 Bear in mind that using GameObject.Find might be pretty expensive, you might want to store that reference in a variable for later use.
 	
 ## Receiving events    
-    Using the socket reference you can receive custom events
+Using the socket reference you can receive custom events
     
     public void Start(){
     	socket.On("boop", TestBoop);
@@ -44,37 +43,32 @@ Bear in mind that using GameObject.Find might be pretty expensive, you might wan
 		Debug.Log(string.Format("[name: {0}, data: {1}]", e.name, e.data));
 	}
 	
-	Also, you can also use lambda expresions as callbacks
+Also, you can also use lambda expresions as callbacks
 	
 	socket.On("boop", (SocketIOEvent e) => {
 		Debug.Log(string.Format("[name: {0}, data: {1}]", e.name, e.data));
 	});
   
   
-  3. Sending events
-  
-    Besides listening to Socket.IO events or your custom events, you can
-    use send information to Socket.IO server using the Emit method.
+## Sending events
+Besides listening to Socket.IO events or your custom events, you can use send information to Socket.IO server using the Emit method.
     
-    a) Sending plain messages
-       socket.Emit("user:login");
-       
-    b) Sending additional data
+### Sending plain messages 
+    socket.Emit("user:login");
     
-       Dictionary<string, string> data = new Dictionary<string, string>();
-       data["email"] = "some@email.com";
-       data["pass"] = Encrypt("1234");
-       socket.Emit("user:login", new JSONObject(data));
-       
-    c) Sometimes, you might want to get a callback when the client confirmed 
-       the message reception. To do this, simply pass a function as the last 
-       parameter of .Emit()
-       
+### Sending additional data
+    Dictionary<string, string> data = new Dictionary<string, string>();
+    data["email"] = "some@email.com";
+    data["pass"] = Encrypt("1234");
+    socket.Emit("user:login", new JSONObject(data));
+
+### Use callbacks       
+Sometimes, you might want to get a callback when the client confirmed the message reception. To do this, simply pass a function as the last parameter of .Emit()
+
        socket.Emit("user:login", OnLogin);
        socket.Emit("user:login", new JSONObject(data), OnLogin);
 
-
-  4. Obtaining current socket id (socket.sid)
+### Obtaining current socket id (socket.sid)
   
     public void Start(){
     	socket.On("open", OnSocketOpen);
@@ -85,44 +79,24 @@ Bear in mind that using GameObject.Find might be pretty expensive, you might wan
     }
 
 
-  5. Namespace Support
-    Not implemented yet!
-  
-  
-  6. Binary Events
-    Not implemented yet!
-
+### Namespace Support
+Not implemented yet!
+    
+### Binary Events
+Not implemented yet!
 
 # Examples
   This package also includes a minimalist test that you might want to use
   to verify that you have setup your environment properly.
-  
-  1. Navigate to the server directory
-     cd PATH/TO/PROJECT/Assets/SocketIO/Server
 
-  2. Unzip the server code outside Unity folder 
-       unzip beep.js.zip -d /tmp/socketio
-
-  3. Go to the destination folder where the server code was extracted
-       cd /tmp/socketio
-     
-  4. Install Socket.IO server package
-       npm install socket.io
-  
-  5. (Optional) Enable debug mode
-       Windows: set DEBUG=*
-       Mac: export DEBUG=*
-  
-  6. Run test server
-       node ./beep.js
-  
-  7. Open the test scene
-       SocketIO/Scenes/SocketIOTest
-  
-  8. Run the scene. Some debug message will be printed to Unity console.
-  
-  9. Open SocketIO/Scripts/Test/TestSocketIO.cs to check what's going on. 
+  1. Ensure you have installed NodeJs (https://nodejs.org/)
+  2. Navigate to the server directory `cd PATH/TO/PROJECT/Assets/SocketIO/Server`
+  3. Run following command `npm install`
+  4. Start `beep.sh` (linux) or `beep.bat` to start the test server or run command `npm run start` 
+  5. Open the test scene `SocketIO/Scenes/SocketIOTest`
+  6. Run the scene. Some debug message will be printed to Unity console.
+  7. Open `SocketIO/Scripts/Test/TestSocketIO.cs` to check what's going on. 
 
 # Thanks to
 
-Fabio Panettieri and Fedor Shubin
+Fabio Panettieri and Fedor Shubin for Socket IO version and Matt Schoen for JSONObject classes.
