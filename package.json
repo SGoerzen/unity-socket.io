@@ -1,0 +1,21 @@
+{
+  "name": "com.unity.unity-socket.io",
+  "displayName": "Unity Socket.IO",
+  "version": "1.1.0",
+  "description": "This plugin allows you to integrate your Unity game with Socket.IO back-end. It implements the protocol described at socket.io-protocol github repo.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SGoerzen/unity-socket.io.git"
+  },
+  "keywords": [
+    "socket.io",
+    "unity",
+    "SocketIO",
+    "WebSockets"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SGoerzen/unity-socket.io/issues"
+  },
+  "homepage": "https://github.com/SGoerzen/unity-socket.io#readme"
+}

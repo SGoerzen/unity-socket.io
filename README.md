@@ -1,9 +1,4 @@
---------------------------------------------------------------------------------
-                          SocketIO for Unity - v1.0.0                          
---------------------------------------------------------------------------------
-
-# Overview #
-  
+# Overview
   This plugin allows you to integrate your Unity game with Socket.IO back-end
   It implements the protocol described at socket.io-protocol github repo.
   ( https://github.com/automattic/socket.io-protocol )
@@ -11,14 +6,16 @@
   While connected, Socket.IO run on it's own thread to avoid blocking the main
   thread. Events are queued and dispatched on the next frame they are received.
 
+# Fork Notes
+Thanks a lot to Fabio Panettieri for creating this project. Since his repository is deprecated, I have forked this project from a newer repository https://github.com/vedi/unity-socket.io (Thanks to vedi (Fedor Shubin) on this point). 
 
-# Support #
-  
-  fpanettieri@gmail.com
-  skype: fabio.panettieri
+I have stabilized some event handling, added some more methods (e.g. `SetField(name, array)`) and modernized coding style. 
 
+Because of the old state of vedi's repository, the aim is to create here an open source version with many contributors and new updates.
 
-# Quick Start #
+A Unity Asset Store release is also possible. The current official version is here: https://assetstore.unity.com/packages/tools/network/socket-io-for-unity-21721
+
+# Quick Start
 
   In order to start using Socket.IO in your project you need to:
   1. Drag the SocketIO prefab from SocketIO/Prefab/ to your scene.
@@ -27,13 +24,11 @@
   4. That's it! You can now start using Socket.IO in your game.
 
 
-# How to use #
+# How to use
  
   1. Obtaining the Socket.IO component reference
-  
-    GameObject go = GameObject.Find("SocketIO");
-    SocketIOComponent socket = go.GetComponent<SocketIOComponent>();
-
+    `GameObject go = GameObject.Find("SocketIO");
+    SocketIOComponent socket = go.GetComponent<SocketIOComponent>();`
 	Bear in mind that using GameObject.Find might be pretty expensive, you 
 	might want to store that reference in a variable for later use.
 	
@@ -99,8 +94,7 @@
     Not implemented yet!
 
 
-# Examples #
-  
+# Examples
   This package also includes a minimalist test that you might want to use
   to verify that you have setup your environment properly.
   
@@ -130,24 +124,6 @@
   
   9. Open SocketIO/Scripts/Test/TestSocketIO.cs to check what's going on. 
 
+# Thanks to
 
-# Troubleshooting #
-
-  This is the first release of the plugin, so error may appear.
-  In order to track them, I've included some debug code that it's
-  only compiled when you uncomment some flags.
-  
-  In order to enable debug messages you might:
-  1. Navigate to SocketIO/Scripts/SocketIO
-  2. Open files Decoder.cs, Encoder.cs and SocketIOComponent.cs
-  3. Uncomment the following line
-       #define SOCKET_IO_DEBUG
-  4. Run your game again. This time messages sent and received will be 
-     logged to Unity console. Hopefully you might find some lead to the 
-     source of your problems / bugs.
-  5. Remember to comment it again after you used it.
-  
-
-# License #
-
-  SocketIO for Unity is provided under The MIT License
+Fabio Panettieri and Fedor Shubin
