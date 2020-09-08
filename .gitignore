@@ -12,3 +12,5 @@
 *.pidb
 *.booproj
 *.meta
+
+.DS_Store
